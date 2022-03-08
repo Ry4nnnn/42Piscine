@@ -1,27 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_strcat.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: welim <welim@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/23 22:48:01 by welim             #+#    #+#             */
-/*   Updated: 2022/02/23 22:48:04 by welim            ###   ########.fr       */
+/*   Created: 2022/02/23 16:03:05 by welim             #+#    #+#             */
+/*   Updated: 2022/02/23 16:03:06 by welim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-
-void	ft_putchar(char c)
+char	*ft_strcat(char	*dest, char	*src)
 {
-	write(1, &c, 1);
-}
+	int	countersrc;
+	int	counterdest;
 
-void	ft_putstr(char *str)
-{
-	while (*str != '\0')
+	counterdest = 0;
+	countersrc = 0;
+	while (dest[counterdest] != '\0')
 	{
-		ft_putchar(*str);
-		str++;
+		counterdest++;
 	}
+	while (src[countersrc] != '\0')
+	{
+		dest[counterdest + countersrc] = src[countersrc];
+		countersrc++;
+	}
+	dest[counterdest + countersrc] = '\0';
+	return (dest);
 }

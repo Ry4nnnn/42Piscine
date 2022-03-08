@@ -1,27 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: welim <welim@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/23 22:48:01 by welim             #+#    #+#             */
-/*   Updated: 2022/02/23 22:48:04 by welim            ###   ########.fr       */
+/*   Created: 2022/03/01 11:17:57 by welim             #+#    #+#             */
+/*   Updated: 2022/03/01 17:50:59 by welim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include <stdlib.h>
+#include <stdio.h>
 
-void	ft_putchar(char c)
+char	*ft_strdup(char *src)
 {
-	write(1, &c, 1);
-}
+	int		i;
+	char	*dest;
 
-void	ft_putstr(char *str)
-{
-	while (*str != '\0')
-	{
-		ft_putchar(*str);
-		str++;
+	i = 0;
+	while (src[i] != 0)
+	{	
+		i++;
 	}
+	dest = malloc (sizeof(char) * i);
+	i = 0;
+	while (src[i] != '\0')
+	{
+		dest[i] = src[i];
+		i++;
+	}
+	dest[i] = '\0';
+	return (dest);
 }
+/*
+int	main(void)
+{
+	char	*src;
+
+	src = "joernewk";
+	printf("%s", ft_strdup(src));
+}
+*/

@@ -1,27 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_range.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: welim <welim@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/23 22:48:01 by welim             #+#    #+#             */
-/*   Updated: 2022/02/23 22:48:04 by welim            ###   ########.fr       */
+/*   Created: 2022/03/01 11:18:17 by welim             #+#    #+#             */
+/*   Updated: 2022/03/01 17:50:28 by welim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include <stdlib.h>
 
-void	ft_putchar(char c)
+int	*ft_range(int min, int max)
 {
-	write(1, &c, 1);
-}
+	int	i;
+	int	*tab;
 
-void	ft_putstr(char *str)
-{
-	while (*str != '\0')
+	i = 0;
+	if (min >= max)
+		return (0);
+	tab = malloc(sizeof(int) * (max - min));
+	if (tab == 0)
+		return (NULL);
+	while (min < max)
 	{
-		ft_putchar(*str);
-		str++;
+		tab[i] = min;
+		min++;
+		i++;
+	}
+	return (tab);
+}
+/*
+#include <stdio.h>
+int	main(void)
+{
+
+	int *range;
+	range = ft_range(1, 23456752);
+	for (int i = 0; i <= 2342; i++)
+	{
+		printf("%d,\n",range[i]);
 	}
 }
+*/

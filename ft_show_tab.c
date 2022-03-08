@@ -1,40 +1,61 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   ft_show_tab.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: welim <welim@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/23 22:48:10 by welim             #+#    #+#             */
-/*   Updated: 2022/02/23 22:48:12 by welim            ###   ########.fr       */
+/*   Created: 2022/03/02 15:17:38 by welim             #+#    #+#             */
+/*   Updated: 2022/03/02 15:17:40 by welim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
+#include "ft_stock_str.h"
 
 void	ft_putchar(char c)
 {
 	write(1, &c, 1);
 }
 
-void	ft_putnbr(int nb)
+void	ft_putstr(char	*str)
 {
-	if (nb == -2147483648)
+	while (*str)
+		write(1, str++, 1);
+}
+
+void	ft_putnbr(int nbr)
+{
+	unsigned int	n;
+
+	n = nbr;
+	if (nbr < 0)
 	{
 		ft_putchar('-');
-		ft_putchar('2');
-		nb = 147483648;
+		n *= -1;
 	}
-	if (nb < 0)
+	if (n < 10)
+		ft_putchar(n + '0');
+	else
 	{
-		ft_putchar('-');
-		nb = -nb;
+		ft_putnbr(n / 10);
+		ft_putnbr(n % 10);
 	}
-	if (nb >= 10)
+}
+
+void	ft_show_tab(struct s_stock_str *par)
+{
+	int	i;
+
+	i = 0;
+	while (par[i].str)
 	{
-		ft_putnbr(nb / 10);
-		nb = nb % 10;
+		ft_putstr(par[i].str);
+		ft_putchar('\n');
+		ft_putnbr(par[i].size);
+		ft_putchar('\n');
+		ft_putstr(par[i].copy);
+		ft_putchar('\n');
+		i++;
 	}
-	if (nb < 10)
-		ft_putchar(nb + 48);
 }

@@ -1,27 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_is_prime.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: welim <welim@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/23 22:48:01 by welim             #+#    #+#             */
-/*   Updated: 2022/02/23 22:48:04 by welim            ###   ########.fr       */
+/*   Created: 2022/02/25 16:28:47 by welim             #+#    #+#             */
+/*   Updated: 2022/02/25 16:29:47 by welim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-
-void	ft_putchar(char c)
+int	ft_is_prime(int nb)
 {
-	write(1, &c, 1);
-}
+	int	divider;
 
-void	ft_putstr(char *str)
-{
-	while (*str != '\0')
+	divider = 2;
+	if (nb <= 1)
+		return (0);
+	while (divider <= nb / 2)
 	{
-		ft_putchar(*str);
-		str++;
+		if (nb % divider == 0)
+			return (0);
+		divider++;
 	}
+	return (1);
 }

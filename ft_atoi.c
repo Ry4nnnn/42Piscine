@@ -1,40 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: welim <welim@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/23 22:48:10 by welim             #+#    #+#             */
-/*   Updated: 2022/02/23 22:48:12 by welim            ###   ########.fr       */
+/*   Created: 2022/02/23 22:48:18 by welim             #+#    #+#             */
+/*   Updated: 2022/02/24 14:20:40 by welim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-
-void	ft_putchar(char c)
+int	ft_atoi(char *str)
 {
-	write(1, &c, 1);
-}
+	int	counter;
+	int	s;
+	int	result;
 
-void	ft_putnbr(int nb)
-{
-	if (nb == -2147483648)
+	counter = 0;
+	s = 1;
+	result = 0;
+	while ((str[counter] >= 9 && str[counter] <= 13) || (str[counter] == 32))
+		counter++;
+	while (str[counter] == '+' || str[counter] == '-')
 	{
-		ft_putchar('-');
-		ft_putchar('2');
-		nb = 147483648;
+		if (str[counter] == '-')
+			s = s * -1;
+		counter++;
 	}
-	if (nb < 0)
+	while (str[counter] >= 48 && str[counter] <= 57)
 	{
-		ft_putchar('-');
-		nb = -nb;
+		result = (str[counter] - 48) + (result * 10);
+		counter++;
 	}
-	if (nb >= 10)
-	{
-		ft_putnbr(nb / 10);
-		nb = nb % 10;
-	}
-	if (nb < 10)
-		ft_putchar(nb + 48);
+	return (result * s);
 }

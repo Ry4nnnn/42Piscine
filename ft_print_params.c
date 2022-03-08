@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_print_params.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: welim <welim@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/23 22:48:01 by welim             #+#    #+#             */
-/*   Updated: 2022/02/23 22:48:04 by welim            ###   ########.fr       */
+/*   Created: 2022/02/26 20:26:54 by welim             #+#    #+#             */
+/*   Updated: 2022/02/27 14:46:49 by welim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,18 @@ void	ft_putstr(char *str)
 	{
 		ft_putchar(*str);
 		str++;
+	}
+}
+
+int	main(int argc, char **argv)
+{
+	int	index;
+
+	index = 1;
+	while (index < argc)
+	{
+		ft_putstr(argv[index]);
+		ft_putchar('\n');
+		index++;
 	}
 }

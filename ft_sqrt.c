@@ -1,27 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_sqrt.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: welim <welim@student.42kl.edu.my>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/23 22:48:01 by welim             #+#    #+#             */
-/*   Updated: 2022/02/23 22:48:04 by welim            ###   ########.fr       */
+/*   Created: 2022/02/25 16:28:39 by welim             #+#    #+#             */
+/*   Updated: 2022/02/25 16:28:41 by welim            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-
-void	ft_putchar(char c)
+int	ft_sqrt(int nb)
 {
-	write(1, &c, 1);
-}
+	int	root;
 
-void	ft_putstr(char *str)
-{
-	while (*str != '\0')
+	root = 1;
+	if (nb <= 0)
+		return (0);
+	while ((root * root < nb) && (root < 46340))
 	{
-		ft_putchar(*str);
-		str++;
+		root++;
 	}
+	if ((root * root) != nb)
+		return (0);
+	else
+		return (root);
 }
